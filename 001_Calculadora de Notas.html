@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas</title>
+
+    <script>
+            function calcularNotas(){
+
+                let nomeAluno = document.getElementById('nomeAluno');
+                let nomeMateria = document.getElementById('nomeMateria');
+
+                let nota1 = document.getElementById('nota1');
+                let nota2 = document.getElementById('nota2');
+                let nota3 = document.getElementById('nota3');
+                let nota4 = document.getElementById('nota4');
+
+                nota1 = parseFloat(nota1.value);
+                nota2 = parseFloat(nota2.value);
+                nota3 = parseFloat(nota3.value);
+                nota4 = parseFloat(nota4.value);
+
+                let resultado = (nota1+nota2+nota3+nota4)/4;
+
+                document.getElementById('Nome').innerHTML = `Nome: ${nomeAluno.value}`;
+                document.getElementById('Materia').innerHTML = `Materia: ${nomeMateria.value}`;
+
+
+
+                if(resultado >= 60){
+
+                    document.getElementById('status').innerHTML = `Status: Aluno aprovado :)`;
+                    document.getElementById('Resultado').innerHTML = `Media: ${resultado}`;
+
+                }
+                else{
+                    document.getElementById('status').innerHTML = `Status: recuperação :(`;
+                    document.getElementById('Resultado').innerHTML = `Media: ${resultado}`;
+
+
+                }
+                
+            }
+
+    </script>
+</head>
+<body>
+    <form action="calcularMedias" method="post" class="formulario" >
+        <h1>Calculadora de nota</h1>
+        <input name="Nome do Aluno" type="text" placeholder="Nome" id="nomeAluno">
+        <input name="Nome da Materia"  type="text" placeholder="Matéria" id="nomeMateria">
+
+        <input name="nota 1" type="text" placeholder="Nota 1°B" id="nota1">
+        <input name="nota 2" type="text" placeholder="Nota 2°B" id="nota2">
+        <input name="nota 3" type="text" placeholder="Nota 3°B" id="nota3">
+        <input name="nota 4" type="text" placeholder="Nota 4°B" id="nota4">
+
+        <input type="button" onclick="calcularNotas()" value="Calcular Media">
+        
+        
+    </form>
+
+    
+    <p id="Nome">Nome: </p>
+    <p id="Materia">Matéria: </p>
+    <p id="Resultado">Media: </p>
+    <p id="status">Status: </p>
+</body>
+</html>

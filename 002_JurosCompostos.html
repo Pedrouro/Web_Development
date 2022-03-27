@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Rendimento</title>
+
+
+    <script>
+            function calcularRendimento(){
+
+                let saldo = document.getElementById('SaldoInicial');
+                let taxa = document.getElementById('TaxaDeJuros');
+                let meses = document.getElementById('NumeroDeMeses');
+                let a = 0;
+
+                saldo = saldo.value;
+                taxa = taxa.value;
+                meses = meses.value;
+
+                saldo = parseFloat(saldo)
+                taxa = parseFloat(taxa)
+                meses = parseFloat(meses)
+
+                taxa = taxa/100;
+
+                if(saldo<0){
+                    alert("Saldo inválido. Digite um número positivo.")
+                }
+                else if(taxa<=0){
+                    alert("Taxa de Juros inválida, Digite uma taxa positiva e acima de 0.")
+                }
+                else if(meses<0 ||!Number.isInteger(meses)){
+                    alert("Número de meses invalido. Digite um número positivo e inteiro.")
+                }
+                else{
+
+                    for(i = 0;i<meses; i++){
+                    
+                    a = saldo*taxa
+                    saldo = saldo+a 
+
+                }
+
+                
+                document.getElementById('rendimento').innerHTML = `Rendimento: ${saldo} R$`;
+                }
+                
+            }
+
+    </script>
+</head>
+<body>
+    <form action="calcularMedias" method="post" class="formulario" >
+
+        <h1>Calculadora de Rendimento</h1>
+
+        <input name="Saldo inicial" type="number" placeholder="Quantia inicial" id="SaldoInicial">
+        <input name="TaxaDeJuros" type="number" placeholder="Juros (%)" id="TaxaDeJuros">
+        <input name="Numero de Meses" type="number" placeholder="Numero de meses" id="NumeroDeMeses">
+
+        <input type="button" onclick="calcularRendimento()" value="Calcular Rendimento">
+        
+        
+    </form>
+
+    
+    <p id="rendimento">Rendimento: </p>
+    
+</body>
+</html>
